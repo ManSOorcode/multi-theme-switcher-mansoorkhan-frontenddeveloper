@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-:root {
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
 }
@@ -23,4 +23,40 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+/* Theme 1 - Light Minimalist */
+.theme1 {
+  --bg: #ffffff;
+  --text: #111827;
+  --btn: #3b82f6;
+  --font: "Inter", sans-serif;
+}
+
+/* Theme 2 - Dark Sidebar */
+.theme2 {
+  --bg: #1f2937;
+  --text: #f9fafb;
+  --btn: #10b981;
+  --font: "Merriweather", serif;
+}
+
+/* Theme 3 - Colorful */
+.theme3 {
+  --bg: #fef3c7;
+  --text: #7c3aed;
+  --btn: #f59e0b;
+  --font: "Pacifico", cursive;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
 }
