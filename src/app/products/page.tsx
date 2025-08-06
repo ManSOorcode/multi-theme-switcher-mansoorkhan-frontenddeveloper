@@ -35,8 +35,6 @@ const Page = () => {
     "https://fakestoreapi.com/products/categories"
   );
 
-  console.log("Categories:", categories);
-
   const filteredProducts = useMemo(() => {
     if (!products) return [];
 
@@ -57,8 +55,6 @@ const Page = () => {
           (product.category?.toLowerCase() || "").includes(query)
       );
     }
-
-    console.log("Filtered Products:", filtered, searchQuery, products);
 
     switch (sortBy) {
       case "price-low":

@@ -1,4 +1,4 @@
-import { useQueries, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const useGetProducts = (key: string, api: string) => {
   return useQuery({
@@ -31,11 +31,9 @@ const useGetCategory = (key: string, api: string) => {
           slug: cat,
         }));
 
-        console.log("Categories:", categoryList);
         return categoryList;
       } catch (error) {
         console.error("Error fetching categories:", error);
-        // throw error;
       }
     },
   });

@@ -16,13 +16,11 @@ const LayoutStruct: React.FC<LayoutProps> = ({ children }) => {
     useTheme();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  console.log("Current Theme:", theme, "Theme Config:", themeConfig);
-
   if (themeConfig.layoutType === "standard") {
     return (
       <div className={`min-h-screen w-full  `}>
         <header
-          className={`${themeConfig.bgSecondary} ${themeConfig.border}    border-b relative z-50 h-40 w-screen`}
+          className={`${themeConfig.bgSecondary} ${themeConfig.border}    border-b relative z-50 h-40 `}
           style={{ height: themeConfig.headerHeight }}
         >
           <div className="h-full px-6 mx-auto max-w-7xl">
