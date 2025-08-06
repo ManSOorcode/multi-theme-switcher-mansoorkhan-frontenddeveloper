@@ -1,36 +1,146 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌗 Multi-Theme Switcher App
 
-## Getting Started
+A responsive and customizable React + TypeScript web application with a theme switcher. Users can seamlessly switch between **three distinct themes**—each with unique layouts, typography, colors, and structure.
 
-First, run the development server:
+---
+
+## ✨ Features
+
+- 🧭 **Theme Switcher Dropdown** in a fixed header (Theme 1 as default)
+- 🎨 **3 Distinct Themes**:
+
+  - **Theme 1**: Light, minimalist layout with sans-serif font
+  - **Theme 2**: Dark mode with sidebar and bold serif font
+  - **Theme 3**: Colorful card-based layout with playful fonts (e.g., _Pacifico_)
+
+- 🧱 Modular components (Buttons, Footer, Sidebar, etc.)
+- 🔁 Persistent theme using `localStorage`
+- 🧠 Theme state managed via **React Context API**
+- 🔌 Product data fetched from [Fake Store API](https://fakestoreapi.com/products)
+- 📱 Fully **Responsive UI** for desktop and mobile
+- 🚀 Smooth **Theme Transition Animations**
+- 🔐 Basic **Security** practices implemented
+- 🧭 Routing via **React Router** with pages:
+
+  - Home (`/`)
+  - About (`/about`)
+  - Contact (`/contact`)
+
+- 📦 No heavy UI libraries (e.g., MUI, Ant Design) used
+- ⚡ Built with **TailwindCSS** for styling
+
+---
+
+## 🧾 Folder Structure
+
+```
+src/
+├── app/                   # Pages: Home, About, Contact, Products
+│   ├── about/
+│   ├── contact/
+│   ├── products/
+│   └── layout.tsx         # Common layout
+├── components/            # Reusable UI Components
+│   ├── buttons/
+│   ├── contact/
+│   ├── Footer.tsx
+│   ├── Sidebar.tsx
+│   └── ThemeSwitcher.tsx
+├── contextapi/            # Theme context
+│   └── ThemeContext.tsx
+├── query/                 # API integration
+│   └── apis/
+│       └── QueryProvider.tsx
+├── types/                 # TypeScript interfaces/types
+├── utils/                 # Helper functions & static data
+├── globals.css            # Global styles
+├── next.config.ts         # Next.js config
+└── ...
+```
+
+---
+
+## 🛠️ Tech Stack
+
+- **Next.js** `v15.4.5`
+- **React** `v19.1.0`
+- **TypeScript** `v5`
+- **Tailwind CSS** `v4.1.11`
+- **React Query (@tanstack/react-query)** `v5.84.1`
+- **PostCSS** `v8.5.6`
+- **ESLint** `v9` with `eslint-config-next`
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/ManSOorcode/multi-theme-switcher-mansoorkhan-frontenddeveloper.git
+cd multi-theme-switcher-mansoorkhan-frontenddeveloper
+```
+
+### 2. Install Dependencies
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 3. Run the Development Server
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the app.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## ⚙️ Theme Switching Logic
 
-## Learn More
+- `ThemeContext.tsx`: Stores the current theme and updates context.
+- `ThemeSwitcher.tsx`: Dropdown to choose from Theme 1, 2, 3.
+- Theme info stored in `localStorage` to persist across sessions.
+- Each theme modifies:
 
-To learn more about Next.js, take a look at the following resources:
+  - Color palette
+  - Font family
+  - Layout structure (grid/sidebar/card)
+  - Spacing and animations
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🔐 Security Practices
 
-## Deploy on Vercel
+- Sanitized all external data
+- Basic route protection and error boundaries
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 API Integration
+
+- Fetches products from [FakeStoreAPI](https://fakestoreapi.com/products)
+- API logic encapsulated in `query/apis/QueryProvider.tsx`
+
+---
+
+## 📸 Screenshots
+
+> Include 2-3 screenshots of each theme with different pages if possible.
+
+---
+
+## 👨‍💻 Author
+
+- **Developer**: Mansoor Khan(https://github.com/ManSOorcode/multi-theme-switcher-mansoorkhan-frontenddeveloper.git)
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.

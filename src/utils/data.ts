@@ -3,7 +3,7 @@ const teamMembers = [
     name: "Sarah Johnson",
     role: "CEO & Founder",
     image:
-      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop&crop=face",
+      "https://images.unsplash.com/photo-1593564127855-ff4bad6ceb92?w=400&h=400&fit=crop&crop=face",
     bio: "Visionary leader with 15+ years in tech industry, passionate about creating meaningful user experiences.",
     social: { linkedin: "#", twitter: "#" },
   },
