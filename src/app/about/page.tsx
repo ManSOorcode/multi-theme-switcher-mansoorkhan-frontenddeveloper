@@ -36,6 +36,7 @@ const Page = () => {
 
   return (
     <div className={`pt-20 pb-16 ${getSectionSpacing()}`}>
+      {/* Hero section */}
       <section className="py-16 lg:py-24">
         <div className={getContainerClasses()}>
           <div className="max-w-5xl mx-auto text-center">
@@ -78,6 +79,7 @@ const Page = () => {
         </div>
       </section>
 
+      {/* Mission and Vision section */}
       <section className="py-16">
         <div className={getContainerClasses()}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
@@ -146,6 +148,7 @@ const Page = () => {
         </div>
       </section>
 
+      {/* Values section */}
       <section className="py-16">
         <div className={getContainerClasses()}>
           <div className="mb-12 text-center lg:mb-16">
@@ -203,6 +206,7 @@ const Page = () => {
         </div>
       </section>
 
+      {/* Milestones section */}
       <section className="py-16">
         <div className={getContainerClasses()}>
           <div className="mb-12 text-center lg:mb-16">
@@ -280,6 +284,7 @@ const Page = () => {
         </div>
       </section>
 
+      {/* Team section */}
       <section className="py-16">
         <div className={getContainerClasses()}>
           <div className="mb-12 text-center lg:mb-16">
@@ -361,6 +366,7 @@ const Page = () => {
         </div>
       </section>
 
+      {/* Statistics section */}
       <section className="py-16">
         <div className={getContainerClasses()}>
           <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:gap-12">
@@ -412,6 +418,7 @@ const Page = () => {
         </div>
       </section>
 
+      {/* Call to Action section */}
       <section className="py-16">
         <div className={getContainerClasses()}>
           <div className={`${getCardClasses()} p-8 lg:p-12 text-center`}>

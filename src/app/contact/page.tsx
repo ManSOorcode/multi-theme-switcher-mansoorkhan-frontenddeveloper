@@ -100,6 +100,7 @@ const Page = () => {
 
   return (
     <div className={`pt-20 pb-16 ${getSectionSpacing()}`}>
+      {/* Hero section */}
       <section className="py-16 lg:py-24">
         <div className={getContainerClasses()}>
           <div className="max-w-5xl mx-auto text-center">
@@ -130,6 +131,7 @@ const Page = () => {
         </div>
       </section>
 
+      {/* Contact Methods Section */}
       <section className="py-16">
         <div className={getContainerClasses()}>
           <div className="mb-12 text-center lg:mb-16">
@@ -172,6 +174,7 @@ const Page = () => {
         </div>
       </section>
 
+      {/* Contact Form and FAQs Section */}
       <section className="py-16">
         <div className={getContainerClasses()}>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
@@ -379,6 +382,7 @@ const Page = () => {
         </div>
       </section>
 
+      {/* Our Offices Section */}
       <section className="py-16">
         <div className={getContainerClasses()}>
           <div className="mb-12 text-center lg:mb-16">
@@ -420,6 +424,7 @@ const Page = () => {
         </div>
       </section>
 
+      {/* Newsletter Section */}
       <NewsLetter
         getCardClasses={getCardClasses}
         getHeadingClasses={getHeadingClasses}
