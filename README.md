@@ -1,3 +1,5 @@
+
+
 # 🌗 Multi-Theme Switcher App
 
 A responsive and customizable React + TypeScript web application with a theme switcher. Users can seamlessly switch between **three distinct themes**—each with unique layouts, typography, colors, and structure.
@@ -131,7 +133,9 @@ Open [http://localhost:3000](http://localhost:3000) to view the app.
 
 ## 📸 Screenshots
 
-> Include 2-3 screenshots of each theme with different pages if possible.
+<img width="300" height="900" alt="theme_one_home" src="https://github.com/user-attachments/assets/0743dee3-9f5b-4bab-9396-e0f4787f59a4" />
+<img width="300" height="900" alt="theme_two_home" src="https://github.com/user-attachments/assets/50b2d209-d401-4b94-af21-42327cb148a1" />
+<img width="300" height="790" alt="theme_three_home" src="https://github.com/user-attachments/assets/e066ebfa-5cdb-4935-9740-f6884ea2b736" />
 
 ---
 
