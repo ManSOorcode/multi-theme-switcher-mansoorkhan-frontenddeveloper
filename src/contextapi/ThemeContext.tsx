@@ -10,7 +10,7 @@ import {
 
 export type Theme = "theme1" | "theme2" | "theme3";
 
-interface ThemeConfig {
+export interface ThemeConfig {
   bg: string;
   bgSecondary: string;
   text: string;

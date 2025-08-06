@@ -1,103 +1,365 @@
+"use client";
+
 import Image from "next/image";
+import { useTheme } from "@/contextapi/ThemeContext";
+import { useGetProducts } from "@/query/apis/queryApi";
+import { Product } from "@/types/homeTypes";
+import SecondaryButton from "@/components/buttons/SecondaryButton";
+import PrimaryButton from "@/components/buttons/PrimaryButtons";
 
-export default function Home() {
+const Page = () => {
+  const {
+    theme,
+    themeConfig,
+    getCardClasses,
+    getButtonClasses,
+    getHeadingClasses,
+    getTextClasses,
+  } = useTheme();
+
+  const { data: featuredProducts, isLoading: loading } = useGetProducts(
+    "products",
+    "https://fakestoreapi.com/products?limit=6"
+  );
+
+  const getContainerClasses = () => {
+    if (theme === "theme3") return "max-w-7xl mx-auto px-6";
+    return "max-w-7xl mx-auto px-6";
+  };
+
+  const getGridClasses = () => {
+    const base = "grid gap-6";
+    if (theme === "theme2")
+      return `${base} grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8`;
+    if (theme === "theme3")
+      return `${base} grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6`;
+    return `${base} grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6`;
+  };
+
+  const getSectionSpacing = () => {
+    return "space-y-16 lg:space-y-20";
+  };
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className={`${getSectionSpacing()}`}>
+      <section className="py-16 lg:py-24">
+        <div className={getContainerClasses()}>
+          <div className="max-w-5xl mx-auto text-center">
+            <h1
+              className={`${getHeadingClasses()} font-bold mb-6 leading-tight ${
+                theme === "theme3"
+                  ? "text-4xl sm:text-5xl lg:text-7xl"
+                  : theme === "theme2"
+                  ? "text-4xl sm:text-5xl lg:text-6xl"
+                  : "text-4xl sm:text-5xl lg:text-6xl"
+              }`}
+            >
+              Welcome to ThemeApp
+            </h1>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <p
+              className={`${getTextClasses()} mx-auto mb-8 leading-relaxed ${
+                theme === "theme3"
+                  ? "text-lg sm:text-xl lg:text-2xl max-w-4xl"
+                  : "text-lg sm:text-xl max-w-3xl"
+              }`}
+            >
+              Experience the power of dynamic theming with our beautiful,
+              responsive multi-theme application that adapts to your
+              preferences.
+            </p>
+
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+              <PrimaryButton
+                getButtonClasses={getButtonClasses}
+                disabled={false}
+              >
+                Explore Products
+              </PrimaryButton>
+              <SecondaryButton themeConfig={themeConfig}>
+                Learn More
+              </SecondaryButton>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      <section className="py-16">
+        <div className={getContainerClasses()}>
+          <div className="mb-12 text-center lg:mb-16">
+            <h2
+              className={`${getHeadingClasses()} font-bold mb-4 ${
+                theme === "theme3"
+                  ? "text-3xl sm:text-4xl lg:text-5xl"
+                  : "text-3xl sm:text-4xl lg:text-5xl"
+              }`}
+            >
+              Why Choose ThemeApp?
+            </h2>
+            <p
+              className={`${getTextClasses()} max-w-3xl mx-auto leading-relaxed ${
+                theme === "theme3" ? "text-lg lg:text-xl" : "text-lg"
+              }`}
+            >
+              Our application showcases the power of thoughtful design and
+              exceptional user experience across multiple stunning themes.
+            </p>
+          </div>
+
+          <div className={getGridClasses()}>
+            {[
+              {
+                icon: "🎨",
+                title: "Beautiful Themes",
+                description:
+                  "Three distinct themes that completely transform the look and feel of the application with seamless transitions.",
+              },
+              {
+                icon: "📱",
+                title: "Responsive Design",
+                description:
+                  "Perfectly optimized for all devices from mobile phones to large desktop screens.",
+              },
+              {
+                icon: "⚡",
+                title: "Lightning Fast",
+                description:
+                  "Built with modern technologies for exceptional performance and smooth user interactions.",
+              },
+              {
+                icon: "🔒",
+                title: "Secure & Reliable",
+                description:
+                  "Your data is protected with enterprise-grade security measures and reliability.",
+              },
+              {
+                icon: "🌟",
+                title: "Amazing UX",
+                description:
+                  "Intuitive navigation, delightful animations, and thoughtful user interface design.",
+              },
+              {
+                icon: "🚀",
+                title: "Modern Stack",
+                description:
+                  "Built with Next.js, TypeScript, and Tailwind CSS for the best developer experience.",
+              },
+            ].map((feature, index) => (
+              <div
+                key={index}
+                className={`${getCardClasses()} group hover:shadow-xl hover:-translate-y-2 transition-all duration-300 p-6 lg:p-8`}
+              >
+                <div
+                  className={`mb-4 transition-transform duration-300 group-hover:scale-110 ${
+                    theme === "theme3" ? "text-4xl lg:text-5xl" : "text-4xl"
+                  }`}
+                >
+                  {feature.icon}
+                </div>
+                <h3
+                  className={`${getHeadingClasses()} font-semibold mb-3 ${
+                    theme === "theme3" ? "text-xl" : "text-lg"
+                  }`}
+                >
+                  {feature.title}
+                </h3>
+                <p className={`${getTextClasses()} leading-relaxed text-sm`}>
+                  {feature.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className={getContainerClasses()}>
+          <div className="mb-12 text-center lg:mb-16">
+            <h2
+              className={`${getHeadingClasses()} font-bold mb-4 ${
+                theme === "theme3"
+                  ? "text-3xl sm:text-4xl lg:text-5xl"
+                  : "text-3xl sm:text-4xl lg:text-5xl"
+              }`}
+            >
+              Featured Products
+            </h2>
+            <p
+              className={`${getTextClasses()} max-w-3xl mx-auto leading-relaxed ${
+                theme === "theme3" ? "text-lg lg:text-xl" : "text-lg"
+              }`}
+            >
+              Discover our handpicked selection of amazing products curated just
+              for you
+            </p>
+          </div>
+
+          {loading ? (
+            <div className={getGridClasses()}>
+              {[...Array(6)].map((_, i) => (
+                <div
+                  key={i}
+                  className={`${getCardClasses()} p-6 animate-pulse`}
+                >
+                  <div
+                    className={`w-full h-48 mb-4 ${themeConfig.borderRadius} ${themeConfig.accent}`}
+                  ></div>
+                  <div
+                    className={`h-4 mb-3 ${themeConfig.borderRadius} ${themeConfig.accent}`}
+                  ></div>
+                  <div
+                    className={`w-2/3 h-4 mb-4 ${themeConfig.borderRadius} ${themeConfig.accent}`}
+                  ></div>
+                  <div
+                    className={`w-1/2 h-6 ${themeConfig.borderRadius} ${themeConfig.accent}`}
+                  ></div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className={getGridClasses()}>
+              {featuredProducts.map((product: Product) => (
+                <div
+                  key={product.id}
+                  // className={`border group overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col rounded-[var(--radius)]`}
+                  className={`${getCardClasses()} group overflow-hidden hover:shadow-xl hover:-translate-y-2 transition-all duration-300 flex flex-col radius-theme1`}
+                >
+                  <div
+                    className={`relative w-full h-48 lg:h-56 mb-4 overflow-hidden  ${themeConfig.borderRadius}`}
+                  >
+                    <Image
+                      src={product.image}
+                      alt={product.title}
+                      fill
+                      className="object-contain p-4 transition-transform duration-300 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
+                  <div className="flex flex-col flex-1 p-4 lg:p-6">
+                    <h3
+                      className={`${getHeadingClasses()} font-semibold mb-2 line-clamp-2 text-lg`}
+                    >
+                      {product.title}
+                    </h3>
+                    <p
+                      className={`${getTextClasses()} mb-4 line-clamp-3 flex-1 text-sm leading-relaxed`}
+                    >
+                      {product.description}
+                    </p>
+                    <div className="flex items-center justify-between pt-4 mt-auto">
+                      <span
+                        className={`${getHeadingClasses()} font-bold text-xl`}
+                      >
+                        ${product.price}
+                      </span>
+                      <button
+                        className={`${getButtonClasses()} text-sm px-4 py-2 hover:shadow-lg transform hover:scale-105 transition-all duration-300`}
+                      >
+                        View Details
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+
+          <div className="mt-12 text-center">
+            <PrimaryButton getButtonClasses={getButtonClasses} disabled={false}>
+              View All Products
+            </PrimaryButton>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className={getContainerClasses()}>
+          <div className="mb-12 text-center">
+            <h2
+              className={`${getHeadingClasses()} font-bold mb-6 ${
+                theme === "theme3"
+                  ? "text-3xl sm:text-4xl lg:text-5xl"
+                  : "text-3xl sm:text-4xl lg:text-5xl"
+              }`}
+            >
+              Ready to Get Started?
+            </h2>
+            <p
+              className={`${getTextClasses()} max-w-3xl mx-auto mb-8 leading-relaxed ${
+                theme === "theme3" ? "text-lg" : "text-lg"
+              }`}
+            >
+              Join thousands of users who have already discovered the power of
+              beautiful, theme-aware applications that adapt to their needs and
+              preferences.
+            </p>
+            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6">
+              <PrimaryButton
+                getButtonClasses={getButtonClasses}
+                disabled={false}
+              >
+                Get Started Now
+              </PrimaryButton>
+              <SecondaryButton themeConfig={themeConfig}>
+                Contact Us
+              </SecondaryButton>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-16">
+        <div className={getContainerClasses()}>
+          <div className="grid grid-cols-2 gap-8 md:grid-cols-4 lg:gap-12">
+            {[
+              {
+                stat: "10k+",
+                label: "Happy Users",
+                description: "Satisfied customers worldwide",
+              },
+              {
+                stat: "50+",
+                label: "Products",
+                description: "Quality items available",
+              },
+              {
+                stat: "99%",
+                label: "Satisfaction",
+                description: "Customer approval rate",
+              },
+              {
+                stat: "24/7",
+                label: "Support",
+                description: "Always here to help",
+              },
+            ].map((item, index) => (
+              <div key={index} className="text-center">
+                <div
+                  className={`${getHeadingClasses()} font-bold mb-2 ${
+                    theme === "theme3"
+                      ? "text-4xl lg:text-5xl"
+                      : "text-3xl lg:text-4xl"
+                  } ${themeConfig.primary.replace("bg-", "text-")}`}
+                >
+                  {item.stat}
+                </div>
+                <p
+                  className={`${getHeadingClasses()} font-semibold mb-1 ${
+                    theme === "theme3" ? "text-lg" : "text-base"
+                  }`}
+                >
+                  {item.label}
+                </p>
+                <p className={`${getTextClasses()} text-sm`}>
+                  {item.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
-}
+};
+
+export default Page;

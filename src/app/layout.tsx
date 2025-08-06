@@ -1,9 +1,9 @@
 // src/app/layout.tsx
 import { ThemeProvider } from "@/contextapi/ThemeContext";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+
 import QueryProvider from "@/query/QueryProvider";
+import LayoutStrut from "@/components/LayoutStrut";
 
 export const metadata = {
   title: "Multi Theme App",
@@ -19,13 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <ThemeProvider>
-          <div className="flex flex-col min-h-screen">
-            <Navbar />
-            <QueryProvider>
-              <main className="flex-grow">{children}</main>
-            </QueryProvider>
-            <Footer />
-          </div>
+          <QueryProvider>
+            <LayoutStrut>{children}</LayoutStrut>
+          </QueryProvider>
         </ThemeProvider>
       </body>
     </html>

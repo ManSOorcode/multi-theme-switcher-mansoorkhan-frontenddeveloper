@@ -1,20 +1,28 @@
-// src/components/ThemeSwitcher.tsx
 "use client";
 
-import { Theme, useTheme } from "@/contextapi/ThemeContext";
+import { Theme, ThemeConfig } from "@/contextapi/ThemeContext";
 
-const ThemeSwitcher = () => {
-  const { theme, setTheme } = useTheme();
+interface ThemeSwitcherProps {
+  theme: string;
+  setTheme: (theme: Theme) => void;
+  themeConfig: ThemeConfig;
+}
 
+const ThemeSwitcher = ({
+  theme,
+  setTheme,
+  themeConfig,
+}: ThemeSwitcherProps) => {
   return (
     <select
+      id="theme-selector"
       value={theme}
       onChange={(e) => setTheme(e.target.value as Theme)}
-      className="bg-gray-100 dark:bg-gray-800 border dark:border-gray-600 text-gray-900 dark:text-white px-2 py-1 rounded"
+      className={`${themeConfig.bgSecondary} ${themeConfig.text} ${themeConfig.border} border ${themeConfig.borderRadius} px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-opacity-50 transition-all duration-200`}
     >
-      <option value="theme1">Theme 1</option>
-      <option value="theme2">Theme 2</option>
-      <option value="theme3">Theme 3</option>
+      <option value="theme1">Light Theme</option>
+      <option value="theme2">Dark Theme</option>
+      <option value="theme3">Colorful Theme</option>
     </select>
   );
 };
